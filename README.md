@@ -19,3 +19,6 @@ Wenn ein bestimmter Song einen weiteren Tag in den Charts ist, dann wird days_in
 Der ETL-Prozess visuell dargestellt:
 
 
+![a](ETL-Prozess.png)
+
+
