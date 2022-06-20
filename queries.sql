@@ -34,7 +34,7 @@ SET left_charts =
          NOT IN (
          SELECT distinct song_id
          FROM TEMP_SPOTIFY_CHARTS)
-	THEN  sysdate()
+	THEN  curdate()
     ELSE  NULL 
 END;
 
