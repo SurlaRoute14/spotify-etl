@@ -43,10 +43,10 @@ END;
 
 INSERT INTO albums ( 
 		    album_id,
-            album_name,
-            album_release_date,
-            album_total_tracks,
-            valid_from)
+                    album_name,
+                    album_release_date,
+                    album_total_tracks,
+                    valid_from)
 SELECT DISTINCT album_id,
                 album_name,
                 album_release_date,
@@ -60,8 +60,8 @@ SELECT album_id FROM albums);
 
 INSERT INTO artists (
 		    artist_id, 
-            artist_name,
-            valid_from)
+           	    artist_name,
+                    valid_from)
 SELECT DISTINCT artist_id, 
 		artist_name, 
 		cordate()
@@ -78,7 +78,7 @@ INSERT INTO streams_fakten( user_id,
 			    artist_id,
 			    played_at_id)
 SELECT s.user_id,
-	   t.song_id,
+       t.song_id,
        t.album_id,
        t.artist_id,
        d.date_id
@@ -87,9 +87,9 @@ JOIN chart_songs t
    ON s.song_id = t.song_id
 JOIN dates d
    ON d.year = SUBSTR(s.played_at, 1,4)
-AND d.month = SUBSTR(s.played_at, 6,2)
-AND d.day_numerical = SUBSTR(s.played_at, 9,2)
-AND d.hour = SUBSTR(s.played_at, 12,2);
+   AND d.month = SUBSTR(s.played_at, 6,2)
+   AND d.day_numerical = SUBSTR(s.played_at, 9,2)
+   AND d.hour = SUBSTR(s.played_at, 12,2);
 
 -- Befüllen der datums Tabelle
 
