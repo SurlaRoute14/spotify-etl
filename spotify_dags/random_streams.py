@@ -5,6 +5,8 @@ import numpy as np
 import re
 import datetime
 
+# Hier ordne ich die gestreamten Songs den von mir per Zufallsprinzip erstellten Benutzern in der users Tabelle per Zufall zu. 
+# Dadurch habe ich eine Grundlage für meine Fakten Tabelle. 
 
 def generate_streaming_data():
 
