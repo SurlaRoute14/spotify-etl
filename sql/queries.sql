@@ -6,7 +6,7 @@ INSERT INTO chart_songs (song_id,
                          artist_id,
                          album_id,
                          song_duration_ms,
-						 explicit,
+			 explicit,
                          song_popularity,
                          entered_charts,
                          days_in_charts,
@@ -15,7 +15,7 @@ SELECT song_id,
        song_name,
        artist_id,
        album_id,
-	   song_duration_ms,
+       song_duration_ms,
        explicit,
        popularity,
        curdate(),
@@ -39,7 +39,7 @@ END;
 
 
 INSERT INTO albums ( 
-		    album_id,
+	    album_id,
             album_name,
             album_release_date,
             album_total_tracks,
@@ -56,12 +56,12 @@ SELECT album_id FROM albums);
 
 
 INSERT INTO artists (
-		    artist_id, 
+	    artist_id, 
             artist_name,
             valid_from)
 SELECT DISTINCT artist_id, 
-				artist_name, 
-				cordate()
+		artist_name, 
+		cordate()
 FROM TEMP_SPOTIFY_CHARTS
 WHERE artist_id NOT IN (
       SELECT artist_id
@@ -70,12 +70,12 @@ WHERE artist_id NOT IN (
 
 
 INSERT INTO streams_fakten( user_id,
-							song_id,
-							album_id,
-							artist_id,
-							played_at_id)
+			    song_id,
+			    album_id,
+			    artist_id,
+			    played_at_id)
 SELECT s.user_id,
-	   t.song_id,
+       t.song_id,
        t.album_id,
        t.artist_id,
        d.date_id
