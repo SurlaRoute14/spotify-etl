@@ -32,6 +32,7 @@ def generate_streaming_data():
     SQL_3 = """ TRUNCATE TABLE streams """
 
     db_cursor.execute(SQL_3)
+    db.commit()
 
     db_cursor.execute(SQL)
 
