@@ -100,7 +100,7 @@ def spotify_etl():
         raise Exception("We have duplicate song ids")
 
     # Gibt es 50 Reihen und 12 Spalten?
-    if song_df.shape != 50:
+    if song_df.shape != (50,12):
         raise Exception("The Data Frame has not got the right shape") 
 
     #Laden in den Datemart:
