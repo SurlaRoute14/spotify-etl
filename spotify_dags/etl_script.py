@@ -92,8 +92,19 @@ def spotify_etl():
 
     song_df = pd.DataFrame(song_dict, columns = ["song_id", "song_name", "artist_name", "artist_id", "song_duration_ms", "popularity", "explicit",
                                                  "number_on_album", "album_id", "album_name", "album_release_date", "album_total_tracks"])
+    
+    # Gegenchecken der Daten:
 
+    # Gibt es keine doppelten Werte in song_id?
+    if len(song_df["song_id"].unique()) <  50:
+        raise Exception("We have duplicate song ids")
 
+    # Gibt es 50 Reihen und 12 Spalten?
+    if song_df.shape != 50:
+        raise Exception("The Data Frame has not got the right shape") 
+
+    #Laden in den Datemart:
+    
     db = mysql.connector.connect(
         user = db_user,
         password = db_password,
