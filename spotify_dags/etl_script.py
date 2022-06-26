@@ -102,7 +102,18 @@ def spotify_etl():
     # Gibt es 50 Reihen und 12 Spalten?
     if song_df.shape != (50,12):
         raise Exception("The Data Frame has not got the right shape") 
+    
+    # In dem df waren teilweise nur Jahre als release_date. In diesem Fall setzte ich das release_date auf den ersten Januar des Jahres.
+    
+    count = 0
+    for dates in song_df["album_release_date"]:
+        if len(dates) != 10:
+            if len(dates)==4:
+                song_df["album_release_date"][count] = dates + '-01-01'
+            else: song_df["album_release_date"][count] = Null
+        count = count +1 
 
+   
     #Laden in den Datemart:
     
     db = mysql.connector.connect(
